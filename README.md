@@ -67,7 +67,7 @@ $ deactivate
 ```
 View more detail here: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
 
-# Install Django
+## Install Django
 
 - Linux and macOS:
 ```sh
@@ -79,7 +79,7 @@ $ pip3 install django
 $ pip install django
 ```
 
-# Start a Blank Django Project
+## Start a Blank Django Project
 
 ```sh
 $ django-admin startproject <folder_project>
