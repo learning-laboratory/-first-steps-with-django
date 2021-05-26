@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title%}about{% endblock %}
+
+{% block content %}
+<h1>About Page</h1>
+
+<p>
+    {{text|capfirst|title|striptags}},
+    {{number}},
+    {{list}}
+</p>
+<p>
+    {{text|title}}
+    <br>
+    {{text_html|striptags|slugify}}
+    <br>
+    {{text_html|safe}}
+</p>
+{% for item in list %}
+    {% if item == "abc" %}
+    <li><strong>{{forloop.counter}} - {{item}}</strong></li>
+    {% else %}
+    <li>{{item}}</li>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
