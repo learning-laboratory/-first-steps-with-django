@@ -79,7 +79,7 @@ $ pip3 install django
 $ pip install django
 ```
 
-## Start a Blank Django Project
+### Start a Blank Django Project
 
 ```sh
 $ django-admin startproject <folder_project>
