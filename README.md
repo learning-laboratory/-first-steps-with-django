@@ -1,1 +1,1 @@
-# -first-steps-with-django
+# First steps with django
