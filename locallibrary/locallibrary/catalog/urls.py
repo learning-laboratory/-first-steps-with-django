@@ -1,6 +1,12 @@
 from django.urls import path
-from catalog import views
+from catalog.views import (
+    index,
+    BookListView,
+    BookDetailView,
+) 
 
 urlpatterns = [
-    path('',views.index, name='index')
+    path('',index, name='index'),
+    path("books/", BookListView.as_view(), name="books"),
+    path("books/<int:id>/", BookDetailView.as_view(), name="book-detail")
 ]

@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.urls import reverse
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
@@ -14,14 +15,15 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-    
-    def get_absolute_url(self):
-        return reverse("book_detail", kwargs={"id": self.id})
 
     def display_genre(self):
         return ', '.join(genre.name for genre in self.genre.all()[:3])
 
     display_genre.short_description = 'Genre'
+    
+    def get_absolute_url(self):
+        return reverse('book-detail', kwargs={ 'id': str(self.id) })
+    
 
 class BookInstance(models.Model):
     id =  models.UUIDField(primary_key=True, default=uuid.uuid4, help_text='Unique ID for this particular book across whole library') 
@@ -63,7 +65,7 @@ class Author(models.Model):
         return self.first_name
     
     def get_absolute_url(self):
-        return reverse("author_detail", kwargs={"id": self.id})
+        return reverse("author-detail", args=[str(self.id)])
 
 class Genre(models.Model):
     name = models.CharField(max_length=200, help_text='Enter a book genre (e.g. Science Fiction)')

@@ -1,6 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from catalog.models import Book, Author, BookInstance, Genre, Language
 
+from django.views.generic import (
+    ListView,
+    DetailView
+) 
+
+class BookListView(ListView):
+    model = Book
+    context_object_name = 'books'
+    queryset = Book.objects.all()
+    template_name = 'books/book_list.html'
+    
+class BookDetailView(DetailView):
+    model = Book
+    context_object_name = 'book'
+    template_name = 'books/book_detail.html'
+    
+    def get_object(self):
+        return get_object_or_404(Book, id=self.kwargs.get("id"))
+    
 def index(request):
     """View function for home page site"""
 
