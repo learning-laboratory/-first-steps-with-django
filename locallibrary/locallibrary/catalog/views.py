@@ -6,8 +6,24 @@ from django.views.generic import (
     DetailView
 ) 
 
+class AuthorListView(ListView):
+    model = Author
+    paginate_by = 2
+    context_object_name = "authors"
+    queryset = Author.objects.all()
+    template_name = "authors/author_list.html"
+
+class AuthorDetailView(DetailView):
+    model = Author
+    context_object_name = "author"
+    template_name = "authors/author_detail.html"
+
+    def get_object(self):
+        return get_object_or_404(Author, id=self.kwargs.get("id"))
+
 class BookListView(ListView):
     model = Book
+    paginate_by = 2
     context_object_name = 'books'
     queryset = Book.objects.all()
     template_name = 'books/book_list.html'

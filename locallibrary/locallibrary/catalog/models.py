@@ -66,6 +66,9 @@ class Author(models.Model):
     
     def get_absolute_url(self):
         return reverse("author-detail", args=[str(self.id)])
+    
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
 
 class Genre(models.Model):
     name = models.CharField(max_length=200, help_text='Enter a book genre (e.g. Science Fiction)')
