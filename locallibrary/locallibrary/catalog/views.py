@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from catalog.models import Book, Author, BookInstance, Genre, Language
-
 from django.views.generic import (
     ListView,
     DetailView
@@ -38,7 +37,7 @@ class BookDetailView(DetailView):
     
 def index(request):
     """View function for home page site"""
-
+    
     # generate counts of some of the main objects
     num_books = Book.objects.all().count()
     num_instances = BookInstance.objects.all().count()
@@ -48,14 +47,13 @@ def index(request):
 
     # the 'all()' is implied by default
     num_authors = Author.objects.count()
-    
     num_genders = Genre.objects.count()
     num_languages = Language.objects.count()
 
     # Number of visits to this view, as counted in the session variable.
     num_visits = request.session.get('num_visits', 0)
     request.session['num_visits'] = num_visits + 1
-    
+
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
