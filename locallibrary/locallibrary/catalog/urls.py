@@ -4,7 +4,8 @@ from catalog.views import (
     BookListView,
     BookDetailView,
     AuthorListView,
-    AuthorDetailView
+    AuthorDetailView,
+    LoanedBooksByUserListView
 ) 
 
 urlpatterns = [
@@ -12,5 +13,6 @@ urlpatterns = [
     path("books/", BookListView.as_view(), name="books"),
     path("books/<int:id>/", BookDetailView.as_view(), name="book-detail"),
     path("authors/", AuthorListView.as_view(), name="authors"),
-    path("authors/<int:id>/", AuthorDetailView.as_view(), name="author-detail")
+    path("authors/<int:id>/", AuthorDetailView.as_view(), name="author-detail"),
+    path('mybooks/', LoanedBooksByUserListView.as_view(), name='my-borrowed'),
 ]
