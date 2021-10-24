@@ -21,7 +21,7 @@ virtualenv -p python3 .
 ### Activating a virtual environment
 
 ```sh
-source env/bin/activate
+source bin/activate
 ```
 
 You can confirm you’re in the virtual environment by checking the location of your Python interpreter, it should point to the env directory.
